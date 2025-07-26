@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Lottie from 'lottie-react';
+import { useAuth } from './context/AuthContext';
 
 // Import your CampusLink Lottie animation here
 import campusAnimation from './assets/animations/campus-student.json';
@@ -8,6 +9,7 @@ import campusAnimation from './assets/animations/campus-student.json';
 
 
 const HeroSection = () => {
+  const { currentUser } = useAuth();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -96,13 +98,15 @@ const HeroSection = () => {
                 className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
                 variants={itemVariants}
               >
-                <motion.button
-                  className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-lg"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Login
-                </motion.button>
+                {!currentUser && (
+                  <motion.button
+                    className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-lg"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Login
+                  </motion.button>
+                )}
                 
                 <motion.button
                   className="px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 text-lg"
