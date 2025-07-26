@@ -14,6 +14,15 @@
 
 ---
 
+## 👥 Team Members
+
+1. Aswini M S (Team Leader - Frontend)
+2. Anu Priya D  (Backend)
+3. Gowthami B (Frontend)
+4. Varsha S (Backend) 
+
+---
+
 ### 📢 Campus Announcements
 - Admins post updates (events, exams, holidays)
 - Students view by categories and dates
@@ -74,14 +83,6 @@ npm start
 ```bash
 FireBase
 
-
-👥 Team Members
-
-1. Aswini M S (Team Leader - Frontend)
-2. Anu Priya D  (Backend)
-3. Gowthami B (Frontend)
-4. Varsha S (Backend) 
----
 
 ### 🌟 App Preview
 
