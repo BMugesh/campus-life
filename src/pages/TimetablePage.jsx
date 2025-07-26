@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Calendar, Clock, Download, Edit3, Save, X, Plus, Trash2, User, Shield, Loader, AlertCircle, CheckCircle } from 'lucide-react';
 import { getDatabase, ref, onValue, set, push } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
+import Lottie from 'lottie-react';
+import scheduleAnimation from '../assets/animations/Schedule.json';
 
 const TimetablePage = () => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -482,8 +484,13 @@ const TimetablePage = () => {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-full flex items-center justify-center shadow-lg">
-            <Calendar size={40} className="text-blue-600" />
+          <div className="w-32 h-32 mx-auto mb-6">
+            <Lottie
+              animationData={scheduleAnimation}
+              loop={true}
+              autoplay={true}
+              className="w-full h-full"
+            />
           </div>
           <h1 className="text-4xl font-bold text-gray-800 mb-4">Class Timetable</h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
