@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Filter, MapPin, Calendar, User, Star, Phone, Plus, X, Save, Edit3, Mail, CheckCircle, Settings, Shield } from 'lucide-react';
+import Lottie from 'lottie-react';
+import emptyAnimation from '../assets/animations/Empty.json';
 
 const LostFoundPage = () => {
   const [activeTab, setActiveTab] = useState('lost');
@@ -248,8 +250,13 @@ const LostFoundPage = () => {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="w-32 h-32 mx-auto mb-8 bg-gradient-to-br from-orange-100 to-red-100 rounded-full flex items-center justify-center shadow-lg">
-            <span className="text-6xl">🔍</span>
+          <div className="w-40 h-40 mx-auto mb-8">
+            <Lottie
+              animationData={emptyAnimation}
+              loop={true}
+              autoplay={true}
+              className="w-full h-full"
+            />
           </div>
           <h1 className="text-4xl font-bold text-gray-800 mb-4">Lost & Found</h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
