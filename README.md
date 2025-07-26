@@ -1,16 +1,16 @@
 # 🎓 CampusLink - Empowering Every Corner of Campus Life
 
-**CampusLink** is a full-stack MERN web application built to centralize essential student utilities into a single, responsive platform. From announcements to peer learning, it bridges the communication gap between students and administration while promoting collaboration within the campus community.
+**CampusLink** is a full-stack web application built to centralize essential student utilities into a single, responsive platform. From announcements to peer learning, it bridges the communication gap between students and administration while promoting collaboration within the campus community.
 
 ---
 
 ## 🛠️ Tech Stack
 
 **Frontend:** React.js 
-**Backend:** Node.js, Express.js  
-**Database:** MongoDB 
-**Authentication:** JSON Web Tokens (JWT)  
-**Hosting:** Render (Frontend + Backend)
+**Backend:** FireBase  
+**Database:** FireBase
+**Authentication:** FireBase
+**Hosting:** Vercel (Frontend) and FireBase (Backend)
 
 ---
 
@@ -59,37 +59,25 @@
 1. **Clone the Repository**
 
 ```bash
-git clone https://github.com/your-username/CampusLink.git
-cd campusconnect
+git clone https://github.com/aswinims27/campus-life.git
+cd campus-life
 
 
 2. Frontend Setup
 
 ```bash
-cd client
 npm install
 npm start
 
 3. Backend Setup
 
 ```bash
-cd server
-npm install
-npm run dev
+FireBase
 
-
-4.Environment Variables
-
-```bash
-
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret_key
-
----
 
 👥 Team Members
 
-1. Aswini MS (Team Leader- Frontend)
+1. Aswini M S (Team Leader - Frontend)
 2. Anu Priya D  (Backend)
 3. Gowthami B (Frontend)
 4. Varsha S (Backend) 
