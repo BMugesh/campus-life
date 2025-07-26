@@ -95,7 +95,15 @@ JWT_SECRET=your_jwt_secret_key
 4. Varsha S (Backend) 
 ---
 
+### 🌟 App Preview
 
+![App Screenshot](/assets/Screenshot 2025-07-26 144409.png)
+![App Screenshot](/assets/Screenshot 2025-07-26 144458.png)
+![App Screenshot](/assets/Screenshot 2025-07-26 144519.png)
+![App Screenshot](/assets/Screenshot 2025-07-26 144634.png)
+![App Screenshot](/assets/Screenshot 2025-07-26 144700.png)
+![App Screenshot](/assets/Screenshot 2025-07-26 145026.png)
+![App Screenshot](/assets/Screenshot 2025-07-26 145110.png)
 
  
  
