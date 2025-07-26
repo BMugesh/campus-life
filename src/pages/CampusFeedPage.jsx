@@ -5,6 +5,8 @@ import {
   collection, getDocs, addDoc, query, orderBy, 
   serverTimestamp, Timestamp, limit
 } from 'firebase/firestore';
+import Lottie from 'lottie-react';
+import announcementsAnimation from '../assets/animations/Annoucements.json';
 
 const CampusFeedPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -254,6 +256,14 @@ const CampusFeedPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
+            <div className="w-32 h-32 mx-auto mb-6">
+              <Lottie
+                animationData={announcementsAnimation}
+                loop={true}
+                autoplay={true}
+                className="w-full h-full"
+              />
+            </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Campus Feed</h1>
             <p className="text-xl opacity-90">
               Stay connected with your campus community
