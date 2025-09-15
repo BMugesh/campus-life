@@ -22,31 +22,26 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   // Create new user with proper role assignment
-// In AuthContext.js, update the signup function:
-const signup = async (email, password, additionalData) => {
-  try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    
-    // Determine if user is admin
-    const isAdmin = ADMIN_EMAILS.includes(email);
-    
-    // Create user document with all required fields
-    await setDoc(doc(db, 'users', userCredential.user.uid), {
-      email,
-      name: additionalData.name || '',
-      rollNumber: additionalData.rollNumber || '',
-      hostelBlock: additionalData.hostelBlock || '',
-      userType: additionalData.userType || 'student', // Add userType
-      role: isAdmin ? 'admin' : 'user',
-      createdAt: new Date().toISOString()
-    });
-    
-    return userCredential;
-  } catch (error) {
-    console.error('Error in signup:', error);
-    throw error;
-  }
-};
+  const signup = async (email, password, additionalData) => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      
+      // Determine if user is admin
+      const isAdmin = ADMIN_EMAILS.includes(email);
+      
+      // Create user document with role
+      await setDoc(doc(db, 'users', userCredential.user.uid), {
+        email,
+        ...additionalData,
+        role: isAdmin ? 'admin' : 'user',
+        createdAt: new Date().toISOString()
+      });
+      
+      return userCredential;
+    } catch (error) {
+      throw error;
+    }
+  };
 
   // Login existing user
   const login = (email, password) => {

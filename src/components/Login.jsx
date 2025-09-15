@@ -10,7 +10,6 @@ import successAnimation from '../assets/animations/Success.json';
 import { auth, db } from '../firebase';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
-import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -38,33 +37,37 @@ const Login = () => {
   const toggleForm = () => {
     setIsLogin(!isLogin);
   };
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    try {
-      if (isLogin) {
-        await signInWithEmailAndPassword(auth, formData.email, formData.password);
-      } else {
-        // Use the signup function from AuthContext instead of directly using createUserWithEmailAndPassword
-        const { signup } = useAuth();
-        await signup(formData.email, formData.password, {
-          name: formData.name,
-          rollNumber: formData.rollNumber,
-          hostelBlock: formData.hostelBlock,
-          userType: userType
-        });
-      }
-  
-      navigate('navigation');
-      setShowSuccess(true);
-      setTimeout(() => setShowSuccess(false), 2000);
-    } catch (error) {
-      console.error('Authentication error:', error);
-      alert(error.message);
-    } finally {
-      setIsLoading(false);
+  e.preventDefault();
+  setIsLoading(true);
+  try {
+    if (isLogin) {
+      await signInWithEmailAndPassword(auth, formData.email, formData.password);
+    } else {
+      const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+      const user = userCredential.user;
+
+      await setDoc(doc(db, "users", user.uid), {
+        name: formData.name,
+        email: formData.email,
+        userType,
+        rollNumber: formData.rollNumber,
+        hostelBlock: formData.hostelBlock
+      });
     }
-  };
+
+    navigate('navigation');
+    setShowSuccess(true);
+    setTimeout(() => setShowSuccess(false), 2000);
+  } catch (error) {
+    console.error('Authentication error:', error);
+    alert(error.message);
+  } finally {
+    setIsLoading(false);
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center p-4">
